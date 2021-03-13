@@ -12,10 +12,13 @@ import hello.core.member.MemoryMemberRepository;
 * */
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
-    //private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 정률 할인 정책
-    private DiscountPolicy discountPolicy; // DIP을 지키도록 하면 NPE가 발생한다. 어떻게 해야 될까?
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
