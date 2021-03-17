@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 /*
 * AppConfig는 애플리케이션의 실제 동작에 필요한 구현 객체를 생성한다.
+* @Configuration를 사용하지 않으면 싱글톤을 보장하지 않는다.
 * */
 @Configuration
 public class AppConfig {
